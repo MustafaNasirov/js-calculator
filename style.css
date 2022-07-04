@@ -1,34 +1,43 @@
 body {
   background-color: black;
 }
-body .num-screen {
+body .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+body .container .input-grid {
+  display: flex;
+  flex-direction: row;
+}
+body .container .input-grid .input-screen {
   color: white;
-  font-size: 20rem;
+  font-size: 6rem;
   text-align: right;
   padding-right: 10rem;
 }
 @media screen and (min-width: 320px) {
-  body .num-screen {
+  body .container .input-grid .input-screen {
     margin-top: 30rem;
     font-size: 8rem;
     padding-right: 6rem;
   }
 }
 @media screen and (min-width: 720px) {
-  body .num-screen {
+  body .container .input-grid .input-screen {
     margin-top: 35rem;
-    font-size: 20rem;
+    font-size: 10rem;
     padding-right: 10rem;
   }
 }
 @media screen and (min-width: 1000px) {
-  body .num-screen {
+  body .container .input-grid .input-screen {
     margin-top: 50rem;
-    font-size: 30rem;
+    font-size: 12rem;
     padding-right: 10rem;
   }
 }
-body .btn-grid {
+body .container .btn-grid {
   justify-content: center;
   padding: 1rem;
   display: grid;
@@ -37,7 +46,7 @@ body .btn-grid {
   align-items: center;
 }
 @media screen and (min-width: 320px) {
-  body .btn-grid .btn-grid__item {
+  body .container .btn-grid .btn-grid__item {
     background-color: rgb(64, 61, 61);
     color: white;
     padding: 1rem;
@@ -50,7 +59,7 @@ body .btn-grid {
     width: 5rem;
     height: 5rem;
   }
-  body .btn-grid .btn-grid__item--long-btn {
+  body .container .btn-grid .btn-grid__item--long-btn {
     grid-column: span 2;
     width: 11.5rem;
     -webkit-border-radius: 5rem;
@@ -59,7 +68,7 @@ body .btn-grid {
   }
 }
 @media screen and (min-width: 720px) {
-  body .btn-grid .btn-grid__item {
+  body .container .btn-grid .btn-grid__item {
     background-color: rgb(64, 61, 61);
     color: white;
     padding: 1rem;
@@ -72,7 +81,7 @@ body .btn-grid {
     width: 10rem;
     height: 10rem;
   }
-  body .btn-grid .btn-grid__item--long-btn {
+  body .container .btn-grid .btn-grid__item--long-btn {
     grid-column: span 2;
     width: 21.5rem;
     -webkit-border-radius: 5rem;
@@ -81,7 +90,7 @@ body .btn-grid {
   }
 }
 @media screen and (min-width: 1000px) {
-  body .btn-grid .btn-grid__item {
+  body .container .btn-grid .btn-grid__item {
     background-color: rgb(64, 61, 61);
     color: white;
     padding: 1rem;
@@ -94,7 +103,7 @@ body .btn-grid {
     width: 15rem;
     height: 15rem;
   }
-  body .btn-grid .btn-grid__item--long-btn {
+  body .container .btn-grid .btn-grid__item--long-btn {
     grid-column: span 2;
     width: 31.5rem;
     -webkit-border-radius: 9rem;
@@ -102,11 +111,11 @@ body .btn-grid {
     color: white;
   }
 }
-body .btn-grid .btn-grid__item--orange-btn {
+body .container .btn-grid .btn-grid__item--orange-btn {
   background-color: orangered;
   color: white;
 }
-body .btn-grid .btn-grid__item--alternate-btn {
+body .container .btn-grid .btn-grid__item--alternate-btn {
   background-color: rgb(199, 199, 199);
   color: black;
 }/*# sourceMappingURL=style.css.map */
