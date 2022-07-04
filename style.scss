@@ -10,36 +10,43 @@ body{
         flex-direction: column;
         align-items: center;
         
-        
-        .input-grid{
-            display: flex;
-            flex-direction: row;
             
-            .input-screen{
-                color: white;
-                font-size: 6rem;
-                text-align: right;
-                padding-right: 10rem;
+            .display{
+                background-color: $display-background;
+                padding: 4rem 4rem;
+                border-radius: 1rem;
+                margin-bottom: 2rem;
+                font-size: 5rem;
+                
+
+                #display-screen{
+                    color: white;
+                    font-size: 8rem;
+                    text-align: right;
+                
+                }
+           
                 @media screen and (min-width: 320px){
                     margin-top: 30rem;
-                    font-size: 8rem;
-                    padding-right: 6rem;
+                    font-size: 6rem;
+                    
                 }
 
                 @media screen and (min-width: 720px){
                     margin-top: 35rem;
-                    font-size: 10rem;
-                    padding-right: 10rem;
+                    font-size: 8rem;
+                    
                 }
 
                 @media screen and (min-width: 1000px){
                     margin-top: 50rem;
-                    font-size: 12rem;
-                    padding-right: 10rem;
+                    font-size: 10rem;
+                   
                 }
             
+            
             }
-        }
+        
 
 
         .btn-grid{
