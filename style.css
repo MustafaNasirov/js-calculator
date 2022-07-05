@@ -6,33 +6,26 @@ body .container {
   flex-direction: column;
   align-items: center;
 }
-body .container .display {
-  background-color: rgb(87, 85, 85);
-  padding: 4rem 4rem;
-  border-radius: 1rem;
-  margin-bottom: 2rem;
-  font-size: 5rem;
-}
-body .container .display #display-screen {
+body .container #display-screen {
   color: white;
   font-size: 8rem;
   text-align: right;
 }
 @media screen and (min-width: 320px) {
-  body .container .display {
-    margin-top: 30rem;
+  body .container #display-screen {
+    margin-top: 10rem;
     font-size: 6rem;
   }
 }
 @media screen and (min-width: 720px) {
-  body .container .display {
-    margin-top: 35rem;
+  body .container #display-screen {
+    margin-top: 15rem;
     font-size: 8rem;
   }
 }
 @media screen and (min-width: 1000px) {
-  body .container .display {
-    margin-top: 50rem;
+  body .container #display-screen {
+    margin-top: 18rem;
     font-size: 10rem;
   }
 }
@@ -77,8 +70,8 @@ body .container .btn-grid {
     font-size: 3rem;
     text-align: center;
     align-items: center;
-    width: 10rem;
-    height: 10rem;
+    width: 7.5rem;
+    height: 5rem;
   }
   body .container .btn-grid .btn-grid__item--long-btn {
     grid-column: span 2;
@@ -99,8 +92,8 @@ body .container .btn-grid {
     font-size: 5rem;
     text-align: center;
     align-items: center;
-    width: 15rem;
-    height: 15rem;
+    width: 10rem;
+    height: 10rem;
   }
   body .container .btn-grid .btn-grid__item--long-btn {
     grid-column: span 2;
@@ -110,11 +103,14 @@ body .container .btn-grid {
     color: white;
   }
 }
-body .container .btn-grid .btn-grid__item--orange-btn {
+body .container .btn-grid .btn-grid__item--opr-btn {
   background-color: orangered;
   color: white;
 }
 body .container .btn-grid .btn-grid__item--alternate-btn {
   background-color: rgb(199, 199, 199);
   color: black;
+}
+body .container .btn-grid .btn-grid__item:active {
+  border-radius: 35%;
 }/*# sourceMappingURL=style.css.map */
