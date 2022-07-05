@@ -95,13 +95,28 @@ const btnClick = (event) => {
         
         calculate();
     }
-        displayResult.innerHTML = valueStr;
+        
+
+    else if (event.target.value == "AC") {
+            resetVar();
+    }
+        
+    displayResult.innerHTML = valueStr;
         valueStr+=event.target.value;
         displayStr+=event.target.value ;
+
+}
+
+const resetVar = () =>{
+    valueStr = "";
+    displayStr = "";
+    displayResult.innerHTML = displayStr;
 }
 
 //parses string to calculate equation
 const calculate = () => {
+    let expression = [];
+
     switch(true){
         case valueStr.includes("+"):
             expression = valueStr.split("+");
@@ -127,7 +142,6 @@ const calculate = () => {
             expression = input.value.substring(1).split("-");
             valueStr = parseFloat(expression[0] * -1) - parseFloat(expression[1]);
             break;
-        
       }
         
     
