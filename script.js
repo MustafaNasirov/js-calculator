@@ -89,9 +89,11 @@ let valueStr = "";
 //combine, calculate and display string on button click
 const btnClick = (event) => {
 
-    if (event.target.value == "+") {
-        calculate();
+    if (event.target.value == "+" || event.target.value == "-" 
+    || event.target.value == "*"  || event.target.value == "/" 
+    || event.target.value == "%"  || event.target.value == "=") {
         
+        calculate();
     }
         displayResult.innerHTML = valueStr;
         valueStr+=event.target.value;
@@ -100,11 +102,34 @@ const btnClick = (event) => {
 
 //parses string to calculate equation
 const calculate = () => {
-    if (valueStr.includes("+")) {
-        let expression = valueStr.split("+");
-        valueStr = parseFloat(expression[0]) + parseFloat(expression[1]);
-    }
-
+    switch(true){
+        case valueStr.includes("+"):
+            expression = valueStr.split("+");
+            valueStr = parseFloat(expression[0]) + parseFloat(expression[1]);
+            break;
+    
+        case valueStr.includes("*"):
+            expression = valueStr.split("*");
+            value = parseFloat(expression[0]) * parseFloat(expression[1]);
+            break;
+    
+        case valueStr.includes("/"):
+            expression = input.value.split("/");
+            value = parseFloat(expression[0]) / parseFloat(expression[1]);
+            break;
+    
+        case valueStr.includes("%"):
+            expression = input.value.split("%");
+            value = parseFloat((expression[0] / parseFloat(expression[1])) * 100);
+            break;
+    
+        case valueStr.substring(1).includes("-"):
+            expression = input.value.substring(1).split("-");
+            valueStr = parseFloat(expression[0] * -1) - parseFloat(expression[1]);
+            break;
+        
+      }
+        
     
 }
 
