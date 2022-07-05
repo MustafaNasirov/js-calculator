@@ -1,5 +1,3 @@
-
-
 const buttons = document.querySelectorAll(".btn-grid__item");
 const displayResult = document.querySelector("#display-result");
 let displayStr = "";
@@ -9,22 +7,22 @@ let valueStr = "";
 //combine, calculate and display string on button click
 const btnClick = (event) => {
 
-    if (event.target.value == "+" || event.target.value == "-" 
-    || event.target.value == "*"  || event.target.value == "/" 
-    || event.target.value == "%"  || event.target.value == "=") {
+    if (event.target.value == "=") {
         
         calculate();
     }
-
-
     else if (event.target.value == "AC") {
             resetVar();
     }
-
+    else{
+        
+        displayResult.innerHTML = event.target.value;
         valueStr+=event.target.value;
         displayStr+=event.target.value;
+    }
 
 }
+
 
 const resetVar = () =>{
     valueStr = "";
@@ -40,21 +38,29 @@ const calculate = () => {
         case valueStr.includes("+"):
             expression = valueStr.split("+");
             valueStr = parseFloat(expression[0]) + parseFloat(expression[1]);
+            console.log(valueStr)
+            break;
+
+        case valueStr.includes("-"):
+            expression = valueStr.split("-");
+            valueStr = parseFloat(expression[0] - parseFloat(expression[1]));
+            console.log(valueStr)
             break;
     
         case valueStr.includes("*"):
             expression = valueStr.split("*");
-            value = parseFloat(expression[0]) * parseFloat(expression[1]);
+            valueStr = parseFloat(expression[0]) * parseFloat(expression[1]);
+            console.log(valueStr)
             break;
     
         case valueStr.includes("/"):
             expression = valueStr.split("/");
-            value = parseFloat(expression[0]) / parseFloat(expression[1]);
+            valueStr = parseFloat(expression[0]) / parseFloat(expression[1]);
             break;
     
         case valueStr.includes("%"):
             expression = valueStr.split("%");
-            value = parseFloat((expression[0] / parseFloat(expression[1])) * 100);
+            valueStr = parseFloat((expression[0] / parseFloat(expression[1])) * 100);
             break;
 
         case valueStr.includes("="):
@@ -78,6 +84,7 @@ const calculate = () => {
 buttons.forEach(button => {
     button.addEventListener('click', btnClick);
 });
+
 
 
 
