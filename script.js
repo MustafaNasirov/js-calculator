@@ -14,6 +14,15 @@ const btnClick = (event) => {
     else if (event.target.value == "AC") {
         resetVar();
     }
+    else if(event.target.value == "+/-"){
+        if(valueStr.length == 0){
+            return;
+        }
+        
+        valueStr = valueStr*-1;
+        displayStr = valueStr;
+        displayResult.innerHTML = valueStr;
+    }
     
    /*  else if(event.target.value == "%"){
         displayStr  
@@ -25,8 +34,6 @@ const btnClick = (event) => {
     }
     
 }
-
-
 
 const resetVar = () =>{
     valueStr = "";
@@ -70,12 +77,7 @@ const calculate = () => {
         case valueStr.includes("="):
             expression = valueStr.split("=");
             valueStr = parseFloat(expression[0]);
-            break;
-     
-        case valueStr.substring(1).includes("+/-"):
-           
-            break;
-            
+            break;  
       }
 
         
