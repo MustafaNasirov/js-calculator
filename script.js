@@ -1,3 +1,86 @@
+
+
+const buttons = document.querySelectorAll(".btn-grid__item");
+const displayResult = document.querySelector("#display-result");
+let displayStr = "";
+
+let valueStr = "";
+
+//combine, calculate and display string on button click
+const btnClick = (event) => {
+
+    if (event.target.value == "+" || event.target.value == "-" 
+    || event.target.value == "*"  || event.target.value == "/" 
+    || event.target.value == "%"  || event.target.value == "=") {
+        
+        calculate();
+    }
+
+
+    else if (event.target.value == "AC") {
+            resetVar();
+    }
+
+        valueStr+=event.target.value;
+        displayStr+=event.target.value;
+
+}
+
+const resetVar = () =>{
+    valueStr = "";
+    displayStr = "";
+    displayResult.innerHTML = displayStr;
+}
+
+//parses string to calculate equation
+const calculate = () => {
+    let expression = [];
+
+    switch(true){
+        case valueStr.includes("+"):
+            expression = valueStr.split("+");
+            valueStr = parseFloat(expression[0]) + parseFloat(expression[1]);
+            break;
+    
+        case valueStr.includes("*"):
+            expression = valueStr.split("*");
+            value = parseFloat(expression[0]) * parseFloat(expression[1]);
+            break;
+    
+        case valueStr.includes("/"):
+            expression = valueStr.split("/");
+            value = parseFloat(expression[0]) / parseFloat(expression[1]);
+            break;
+    
+        case valueStr.includes("%"):
+            expression = valueStr.split("%");
+            value = parseFloat((expression[0] / parseFloat(expression[1])) * 100);
+            break;
+
+        case valueStr.includes("="):
+            expression = valueStr.split("=");
+            valueStr = parseFloat(expression[0]);
+            break;
+     /*
+        case valueStr.substring(1).includes("-"):
+            expression = valueStr.substring(1).split("-");
+            valueStr = parseFloat(expression[0] * -1) - parseFloat(expression[1]);
+            break;
+            */
+      }
+
+        
+    displayResult.innerHTML = valueStr;
+}
+
+
+//Add listener to each button with handler
+buttons.forEach(button => {
+    button.addEventListener('click', btnClick);
+});
+
+
+
 /*
 buttons.map(button => {
     button.addEventListener('click', (e) =>{
@@ -68,8 +151,6 @@ const calculateResult=()=>{
 }
 */
 
-
-
 //const displayResult = document.querySelector("#display-result")
 //const displayHistory = document.querySelector("#display-history")
 
@@ -78,77 +159,3 @@ const calculateResult=()=>{
 
 //const oprButtons = document.querySelectorAll('.btn-grid__item--opr-btn');
 //console.log(oprButtons);
-
-
-const buttons = document.querySelectorAll(".btn-grid__item");
-const displayResult = document.querySelector("#display-result");
-let displayStr = "";
-
-let valueStr = "";
-
-//combine, calculate and display string on button click
-const btnClick = (event) => {
-
-    if (event.target.value == "+" || event.target.value == "-" 
-    || event.target.value == "*"  || event.target.value == "/" 
-    || event.target.value == "%"  || event.target.value == "=") {
-        
-        calculate();
-    }
-        
-
-    else if (event.target.value == "AC") {
-            resetVar();
-    }
-        
-    displayResult.innerHTML = valueStr;
-        valueStr+=event.target.value;
-        displayStr+=event.target.value ;
-
-}
-
-const resetVar = () =>{
-    valueStr = "";
-    displayStr = "";
-    displayResult.innerHTML = displayStr;
-}
-
-//parses string to calculate equation
-const calculate = () => {
-    let expression = [];
-
-    switch(true){
-        case valueStr.includes("+"):
-            expression = valueStr.split("+");
-            valueStr = parseFloat(expression[0]) + parseFloat(expression[1]);
-            break;
-    
-        case valueStr.includes("*"):
-            expression = valueStr.split("*");
-            value = parseFloat(expression[0]) * parseFloat(expression[1]);
-            break;
-    
-        case valueStr.includes("/"):
-            expression = input.value.split("/");
-            value = parseFloat(expression[0]) / parseFloat(expression[1]);
-            break;
-    
-        case valueStr.includes("%"):
-            expression = input.value.split("%");
-            value = parseFloat((expression[0] / parseFloat(expression[1])) * 100);
-            break;
-    
-        case valueStr.substring(1).includes("-"):
-            expression = input.value.substring(1).split("-");
-            valueStr = parseFloat(expression[0] * -1) - parseFloat(expression[1]);
-            break;
-      }
-        
-    
-}
-
-
-//Add listener to each button with handler
-buttons.forEach(button => {
-    button.addEventListener('click', btnClick);
-});
