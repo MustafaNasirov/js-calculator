@@ -1,94 +1,113 @@
-const buttons = document.querySelectorAll(".btn-grid__item");
-const displayResult = document.querySelector("#display-result");
-let displayStr = "";
+//const { number } = require("assert-plus");
 
-let valueStr = "";
+const resultDisplay = document.querySelector("#display-result");
+const inputDisplay = document.querySelector("#display-input");
+const numbers = document.querySelectorAll(".btn-grid__number");
+const operators = document.querySelectorAll(".btn-grid__operator");
+const ac = document.querySelector("#ac");
+const equals = document.querySelector("#equals");
 
-//combine, calculate and display string on button click
-const btnClick = (event) => {
+console.log(resultDisplay);
+console.log(inputDisplay);
+console.log(numbers);
+console.log(operators);
 
-    if (event.target.value == "=") {
-        
-        calculate();
+
+let numberOne = "";
+let operator = "";
+let numberTwo = "";
+let result = "";
+
+const updateHtml = () => {
+  inputDisplay.innerText = `${numberOne} ${operator} ${numberTwo}`;
+  resultDisplay.innerText = result;
+
+  console.log(resultDisplay);
+};
+
+const clear = () => {
+  numberOne = "";
+  operator = "";
+  numberTwo = "";
+  result = "";
+
+  updateHtml();
+};
+
+const calculateSum = (numberOne, operator, numberTwo) => {
+  if (typeof numberOne !== "number" || typeof numberTwo !== "number") {
+    console.error("numbers must be type 'number'");
+    console.log(numberOne);
+    console.log(numberTwo);
+    return;
+  }
+
+  switch (operator) {
+    case "+":
+      return numberOne + numberTwo;
+    case "-":
+      return numberOne - numberTwo;
+    case "*":
+      return numberOne * numberTwo;
+    case "/":
+      return numberOne / numberTwo;
+/*     case ".":
+        return numberOne;
+    case "+/-":
+        return numberOne * -1;
+    case "%":
+        return numberOne / 100; */
+    default:
+      console.error(`unhandled operator: ${operator}`);
+  }
+};
+
+// need a way of displaying user input (numbers and the operators)
+
+const handleNumberClick = (event) => {
+  if (operator === "") {
+    numberOne += event.target.innerText;
+  } else {
+    numberTwo += event.target.innerText;
+  }
+
+  updateHtml();
+};
+
+// TODO: if no first number, make the first number 0
+const handleOperatorClick = (event) => {
+    if(result){
+        numberTwo = "";
+
+        numberOne = result;
+        updateHtml();
     }
-    else if (event.target.value == "AC") {
-        resetVar();
-    }
-    else if(event.target.value == "+/-"){
-        if(valueStr.length == 0){
-            return;
-        }
-        
-        valueStr = valueStr*-1;
-        displayStr = valueStr;
-        displayResult.innerHTML = valueStr;
-    }
+    operator = event.target.innerText;
+    updateHtml();
+};
+
+// TODO: convert numberOne, numberTwo into "number" types
+const handleEqualsClick = (event) => {
+    console.log(result);
+
     
-   /*  else if(event.target.value == "%"){
-        displayStr  
-    } */
-    else{
-        displayResult.innerHTML = event.target.value;
-        valueStr+=event.target.value;
-        displayStr+=event.target.value;
-    }
-    
-}
+    numberOne = Number(numberOne);
+    numberTwo = Number(numberTwo);
+    result = calculateSum(numberOne, operator, numberTwo);
+    numberOne="";
+    numberTwo="";
+    operator = "";
+    updateHtml();
+};
 
-const resetVar = () =>{
-    valueStr = "";
-    displayStr = "";
-    displayResult.innerHTML = displayStr;
-}
-
-//parses string to calculate equation
-const calculate = () => {
-    let expression = [];
-
-    switch(true){
-        case valueStr.includes("+"):
-            expression = valueStr.split("+");
-            valueStr = parseFloat(expression[0]) + parseFloat(expression[1]);
-            console.log(valueStr)
-            break;
-
-        case valueStr.includes("-"):
-            expression = valueStr.split("-");
-            valueStr = parseFloat(expression[0] - parseFloat(expression[1]));
-            console.log(valueStr)
-            break;
-    
-        case valueStr.includes("*"):
-            expression = valueStr.split("*");
-            valueStr = parseFloat(expression[0]) * parseFloat(expression[1]);
-            console.log(valueStr)
-            break;
-    
-        case valueStr.includes("/"):
-            expression = valueStr.split("/");
-            valueStr = parseFloat(expression[0]) / parseFloat(expression[1]);
-            break;
-    
-        case valueStr.includes("%"):
-            expression = valueStr.split("%");
-            valueStr = parseFloat(expression[0]/100);            
-            break;
-
-        case valueStr.includes("="):
-            expression = valueStr.split("=");
-            valueStr = parseFloat(expression[0]);
-            break;  
-      }
-
-        
-    displayResult.innerHTML = valueStr;
-}
-
-
-//Add listener to each button with handler
-buttons.forEach(button => {
-    button.addEventListener('click', btnClick);
+numbers.forEach((number) => {
+  number.addEventListener("click", handleNumberClick);
 });
+operators.forEach((operator) => {
+  operator.addEventListener("click", handleOperatorClick);
+});
+ac.addEventListener("click", clear);
+equals.addEventListener("click", handleEqualsClick);
 
 
 
