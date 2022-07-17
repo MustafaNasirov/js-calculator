@@ -1,5 +1,3 @@
-//const { number } = require("assert-plus");
-
 const resultDisplay = document.querySelector("#display-result");
 const inputDisplay = document.querySelector("#display-input");
 const numbers = document.querySelectorAll(".btn-grid__number");
@@ -63,7 +61,6 @@ const calculateSum = (numberOne, operator, numberTwo) => {
 };
 
 // need a way of displaying user input (numbers and the operators)
-
 const handleNumberClick = (event) => {
   if (operator === "") {
     numberOne += event.target.innerText;
