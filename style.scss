@@ -2,137 +2,118 @@
 
 
 body{
-    background-color: black;
+    background-color: rgb(24, 22, 20);
 
 
     .container{
         display: flex;
         flex-direction: column;
         align-items: center;
-        
+        justify-content: center;
             
                 #display-screen{
                     color: white;
-                    font-size: 100%;
+                    font-size: 1.3rem;
                     text-align: center;
-                    margin-bottom: 2.5rem;
-                
-           
-                @media screen and (min-width: 320px){
-                    margin-top: 10rem;
-                    
-                }
+                    margin-bottom: 2.5%;
+                    height: 3rem;
+                    width: 40%;
+                    padding: 10%;
+                    border: solid white 0.124rem;
+                    border-radius: 10px;
 
-                @media screen and (min-width: 720px){
-                    margin-top: 15rem;
-                   
-                    
-                }
+                    #display-result{
+                       float: right;
+                       color: rgb(255, 235, 175);
+                    }
 
-                @media screen and (min-width: 1000px){
-                    margin-top: 18rem;
-               
-                   
+                    #display-input{
+                       float: left;
+                        
+                    }
                 }
-            }
+            
             
 
         .btn-grid{
-            justify-content: center;
+            justify-items: center;
+            align-items: center;
             padding: 5%;
+            border: solid white 0.2rem;
             display: grid;
             grid-auto-flow: row;
-            grid-template-columns: auto auto auto auto;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+
             align-items: center;
             background-color: $display-background;
             border-radius: 10%;
 
 
-            .btn-grid__item{
+            .btn-grid-item{
+                background-color: $btn-background-color;
+                width: 2.5rem;
+                height: 2.5rem;
+                
+                border-radius: 10px;
+                margin: 0.05rem;
 
-                @media screen and (min-width: 320px){
-                    background-color: $btn-background-color;
-                    color: white;
-                    padding: 1rem;
-                    margin: 0.5rem;
-                    padding: auto;
-                    border-radius: 50%;
-                    font-size: 100%;
-                    text-align: center;
-                    align-items: center;
-                    width: 15%;
-                    height: 15%; 
-
-                    &--long-btn{
-                        grid-column: span 2;
-                        width: 10%;
-                        -webkit-border-radius: 5rem;
-                        background-color: $btn-background-color;
-                        color: white;
-                    }
-                }  
-
-                @media screen and (min-width:720px){
-                    background-color: $btn-background-color;
-                    color: white;
-                    padding: 1rem;
-                    margin: 0.5rem;
-                    padding: auto;
-                    border-radius: 50%;
-                    font-size: 100%;
-                    text-align: center;
-                    align-items: center;
-                    width:15%;
-                    height:15%; 
-
-                    &--long-btn{
-                        grid-column: span 2;
-                        width: 100%;
-                        -webkit-border-radius: 5rem;
-                        background-color: $btn-background-color;
-                        color: white;
-                    }
-                    
-                }  
-
-                @media screen and (min-width:1000px){
-                    background-color: $btn-background-color;
-                    color: white;
-                    margin: 1rem;
-                    padding: 1rem;
-                    border-radius: 50%;
-                    font-size: 100%;
-                    text-align: center;
-                    align-items: center;
-                    width:80%;
-                    height:80%; 
-
-                    &--long-btn{
-                        grid-column: span 2;
-                        width: 31.5rem;
-                        -webkit-border-radius: 9rem;
-                        background-color: $btn-background-color;
-                        color: white;
-                    }
-                }  
-
-                    &--opr-btn{
-                        background-color: orangered;
-                        color: white;
-                    }
-
-                    &--alternate-btn{
-                        background-color: $btn-background-colorAlt;
-                        color: black;                        
-                    }
             }
 
-            .btn-grid__item:active{
+            .btn-grid__number{
+                background-color: $btn-background-colorAlt;
+                padding: 1rem;
+
+            }
+
+            .btn-grid__number:active{
                 border-radius: 35%;
+                background-color: $btn-background-pressed;
             }
         
         }
     }
 
 
+    @media screen and (min-width:768px){
+
+        .container{
+            .btn-grid{
+                padding: auto;
+
+                .btn-grid-item{
+                    width: 5rem;
+                    height: 5rem;
+                    font-size: 2rem;
+                }   
+            }
+
+            #display-screen{
+                font-size: 2.5rem;
+                width: 60%;
+            }
+        }
+    }
+
+    @media screen and (min-width:1000px){
+
+        .container{
+            .btn-grid{
+                padding: auto;
+
+                .btn-grid-item{
+                    width: 7.5rem;
+                    height: 7.5rem;
+                    font-size: 3rem;
+                }
+                
+            }
+
+            #display-screen{
+                font-size: 4.5rem;
+                width: 80%;
+            }
+        }
+    }
 }
+

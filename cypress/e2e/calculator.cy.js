@@ -46,13 +46,12 @@ describe('positive case calculator tests', () => {
     cy.get('#display-result').should("contain", "8.5");
   })
 
-  it('should check 0.1 displays on % 10', () => {
+  it('should check 0.1 displays on 10 %', () => {
     cy.visit('http://127.0.0.1:5500/index.html');
-    cy.get('#percent').click();
     cy.get('#one').click();
     cy.get('#zero').click();
+    cy.get('#percent').click();
     cy.get('#equals').click();
-
     cy.get('#display-result').should("contain", "0.1");
   })
 
