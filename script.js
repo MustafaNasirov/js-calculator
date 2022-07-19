@@ -47,7 +47,7 @@ const calculateSum = (numberOne, operator, numberTwo) => {
       return numberOne / numberTwo;
     case "%":
       return numberOne / 100;
-    case "-":
+    case "+/-":
       return numberOne * -1;
 
     default:

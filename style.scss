@@ -1,9 +1,14 @@
 @use "./variables" as *;
 
+*{
+    margin: 0;
+    padding: 0;
+}
 
 body{
     background-color: rgb(24, 22, 20);
-
+    font-family: 'Orbitron', sans-serif;
+    height: 100vh;
 
     .container{
         display: flex;
@@ -15,10 +20,11 @@ body{
                     color: white;
                     font-size: 1.3rem;
                     text-align: center;
-                    margin-bottom: 2.5%;
-                    height: 3rem;
-                    width: 40%;
-                    padding: 10%;
+                    margin-bottom: 1.5%;
+                    margin-top: 0.5rem;
+                    height: 2.5rem;
+                    width: 10rem;
+                    padding: 3rem;
                     border: solid white 0.124rem;
                     border-radius: 10px;
 
@@ -28,33 +34,37 @@ body{
                     }
 
                     #display-input{
-                       float: left;
-                        
+                        float: left;
+                        padding-top: 1rem;
                     }
                 }
-            
-            
 
         .btn-grid{
             justify-items: center;
             align-items: center;
-            padding: 5%;
+            padding: 1rem;
             border: solid white 0.2rem;
             display: grid;
             grid-auto-flow: row;
             grid-template-columns: 1fr 1fr 1fr 1fr;
             grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-
+            grid-template-areas: 
+                "ac negate percent divide"
+                "seven eight nine multiply"
+                "four five six minus"
+                "one two three plus"
+                "zero zero dot equals";
             align-items: center;
             background-color: $display-background;
-            border-radius: 10%;
+            border-radius: 10px;
 
 
             .btn-grid-item{
                 background-color: $btn-background-color;
-                width: 2.5rem;
-                height: 2.5rem;
-                
+                width: 2.8rem;
+                height: 2.8rem;
+                font-family: 'Orbitron', sans-serif;
+                font-weight: 800;
                 border-radius: 10px;
                 margin: 0.05rem;
 
@@ -62,15 +72,17 @@ body{
 
             .btn-grid__number{
                 background-color: $btn-background-colorAlt;
-                padding: 1rem;
+            }
 
+            #zero{
+                grid-column: span 2;
+                width: 5.6rem;
             }
 
             .btn-grid__number:active{
                 border-radius: 35%;
                 background-color: $btn-background-pressed;
             }
-        
         }
     }
 
@@ -82,15 +94,10 @@ body{
                 padding: auto;
 
                 .btn-grid-item{
-                    width: 5rem;
-                    height: 5rem;
-                    font-size: 2rem;
+                    width: 3rem;
+                    height: 3rem;
+                    font-size: 1.2rem;
                 }   
-            }
-
-            #display-screen{
-                font-size: 2.5rem;
-                width: 60%;
             }
         }
     }
@@ -107,11 +114,6 @@ body{
                     font-size: 3rem;
                 }
                 
-            }
-
-            #display-screen{
-                font-size: 4.5rem;
-                width: 80%;
             }
         }
     }

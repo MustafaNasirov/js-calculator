@@ -1,5 +1,12 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   background-color: rgb(24, 22, 20);
+  font-family: "Orbitron", sans-serif;
+  height: 100vh;
 }
 body .container {
   display: flex;
@@ -11,10 +18,11 @@ body .container #display-screen {
   color: white;
   font-size: 1.3rem;
   text-align: center;
-  margin-bottom: 2.5%;
-  height: 3rem;
-  width: 40%;
-  padding: 10%;
+  margin-bottom: 1.5%;
+  margin-top: 0.5rem;
+  height: 2.5rem;
+  width: 10rem;
+  padding: 3rem;
   border: solid white 0.124rem;
   border-radius: 10px;
 }
@@ -24,30 +32,37 @@ body .container #display-screen #display-result {
 }
 body .container #display-screen #display-input {
   float: left;
+  padding-top: 1rem;
 }
 body .container .btn-grid {
   justify-items: center;
   align-items: center;
-  padding: 5%;
+  padding: 1rem;
   border: solid white 0.2rem;
   display: grid;
   grid-auto-flow: row;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-areas: "ac negate percent divide" "seven eight nine multiply" "four five six minus" "one two three plus" "zero zero dot equals";
   align-items: center;
   background-color: rgb(44, 42, 40);
-  border-radius: 10%;
+  border-radius: 10px;
 }
 body .container .btn-grid .btn-grid-item {
   background-color: rgb(194, 194, 194);
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2.8rem;
+  height: 2.8rem;
+  font-family: "Orbitron", sans-serif;
+  font-weight: 800;
   border-radius: 10px;
   margin: 0.05rem;
 }
 body .container .btn-grid .btn-grid__number {
   background-color: rgb(101, 101, 101);
-  padding: 1rem;
+}
+body .container .btn-grid #zero {
+  grid-column: span 2;
+  width: 5.6rem;
 }
 body .container .btn-grid .btn-grid__number:active {
   border-radius: 35%;
@@ -58,13 +73,9 @@ body .container .btn-grid .btn-grid__number:active {
     padding: auto;
   }
   body .container .btn-grid .btn-grid-item {
-    width: 5rem;
-    height: 5rem;
-    font-size: 2rem;
-  }
-  body .container #display-screen {
-    font-size: 2.5rem;
-    width: 60%;
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.2rem;
   }
 }
 @media screen and (min-width: 1000px) {
@@ -75,9 +86,5 @@ body .container .btn-grid .btn-grid__number:active {
     width: 7.5rem;
     height: 7.5rem;
     font-size: 3rem;
-  }
-  body .container #display-screen {
-    font-size: 4.5rem;
-    width: 80%;
   }
 }/*# sourceMappingURL=style.css.map */
